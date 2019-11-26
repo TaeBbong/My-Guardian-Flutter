@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:my_guardian/screen_detail.dart';
 
 class CardWidget extends StatelessWidget {
   final String imageName;
   final String heading;
   final String subHeading;
   final double width;
+  final int index;
 
-  CardWidget({this.imageName, this.heading, this.subHeading, this.width});
+  CardWidget(
+      {this.imageName, this.heading, this.subHeading, this.width, this.index});
 
   @override
   Widget build(BuildContext context) {

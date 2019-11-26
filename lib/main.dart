@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_guardian/screen_house.dart';
 import 'package:my_guardian/screen_main.dart';
+import 'package:my_guardian/screen_shelter.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,9 +35,9 @@ class MyApp extends StatelessWidget {
               children: <Widget>[
                 MainScreen(),
                 HouseScreen(),
-                Container(),
-                Container(),
-                Container()
+                ShelterScreen(),
+                Container(), // QuizPage
+                Container() // MyPage
               ],
             ),
             bottomNavigationBar: TabBar(
