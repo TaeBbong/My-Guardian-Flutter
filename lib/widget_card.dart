@@ -4,13 +4,14 @@ class CardWidget extends StatelessWidget {
   final String imageName;
   final String heading;
   final String subHeading;
+  final double width;
 
-  CardWidget({this.imageName, this.heading, this.subHeading});
+  CardWidget({this.imageName, this.heading, this.subHeading, this.width});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200.0,
+      width: this.width,
       child: Card(
         margin: EdgeInsets.all(5),
         child: Wrap(

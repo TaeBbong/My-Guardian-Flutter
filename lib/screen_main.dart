@@ -4,25 +4,8 @@ import './widget_card.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          elevation: 0.0,
-          backgroundColor: Color(0xFFffffff),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(
-                'images/logo.png',
-                fit: BoxFit.contain,
-                height: 30,
-              ),
-              Container(
-                  padding: const EdgeInsets.only(right: 1),
-                  child: Text('My-Guardian',
-                      style: TextStyle(color: Colors.black)))
-            ],
-          )),
-      body: Column(
+    return Container(
+      child: Column(
         children: <Widget>[
           mockupSection,
           Container(
@@ -37,20 +20,25 @@ class MainScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
                   CardWidget(
-                      imageName: 'images/dog.png',
-                      heading: '후기제목1',
-                      subHeading: '내용1'),
+                    imageName: 'images/dog.png',
+                    heading: '후기제목1',
+                    subHeading: '내용1',
+                    width: 200,
+                  ),
                   CardWidget(
-                      imageName: 'images/dog.png',
-                      heading: '후기제목2',
-                      subHeading: '내용2'),
+                    imageName: 'images/dog.png',
+                    heading: '후기제목2',
+                    subHeading: '내용2',
+                    width: 200,
+                  ),
                   CardWidget(
-                      imageName: 'images/dog.png',
-                      heading: '후기제목3',
-                      subHeading: '내용3'),
+                    imageName: 'images/dog.png',
+                    heading: '후기제목3',
+                    subHeading: '내용3',
+                    width: 200,
+                  ),
                 ],
               ))
-          //버튼하고 메뉴바 추가예정.
         ],
       ),
     );
