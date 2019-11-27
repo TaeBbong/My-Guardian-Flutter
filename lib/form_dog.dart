@@ -26,13 +26,22 @@ class _DogFormState extends State<DogForm> {
           ),
           onTap: _goBack,
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.access_alarm,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          )
+        ],
         elevation: 0.0,
         backgroundColor: Color(0xFFffffff),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'images/logo.png',
+              'images/logo_noback.png',
               fit: BoxFit.contain,
               height: 30,
             ),
@@ -159,6 +168,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: sex_man,
                         onChanged: (bool value) {
                           setState(() {
@@ -173,6 +183,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: sex_woman,
                         onChanged: (bool value) {
                           setState(() {
@@ -203,6 +214,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: vac_done,
                         onChanged: (bool value) {
                           setState(() {
@@ -217,6 +229,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: vac_not,
                         onChanged: (bool value) {
                           setState(() {
@@ -247,6 +260,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: mid_done,
                         onChanged: (bool value) {
                           setState(() {
@@ -261,6 +275,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: mid_not,
                         onChanged: (bool value) {
                           setState(() {
@@ -291,6 +306,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: type_small,
                         onChanged: (bool value) {
                           setState(() {
@@ -306,6 +322,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: type_medium,
                         onChanged: (bool value) {
                           setState(() {
@@ -321,6 +338,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: type_large,
                         onChanged: (bool value) {
                           setState(() {
@@ -411,6 +429,7 @@ class _DogFormState extends State<DogForm> {
                   Row(
                     children: <Widget>[
                       Checkbox(
+                        activeColor: Colors.orange,
                         value: agree,
                         onChanged: (bool value) {
                           setState(() {

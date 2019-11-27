@@ -4,6 +4,7 @@ import 'package:my_guardian/model_guard.dart';
 import 'package:my_guardian/screen_detail.dart';
 import 'package:my_guardian/widget_card.dart';
 import 'package:my_guardian/model_dog.dart';
+import 'package:my_guardian/widget_listcard.dart';
 
 class ShelterScreen extends StatefulWidget {
   _ShelterScreenState createState() => _ShelterScreenState();
@@ -61,7 +62,7 @@ class _ShelterScreenState extends State<ShelterScreen> {
 
   InkWell _buildCard(Dog dog) {
     return InkWell(
-      child: CardWidget(
+      child: ListCardWidget(
         heading: dog.name,
         subHeading:
             '견종: ' + dog.type + ' / 성별: ' + dog.sex + ' / 나이: ' + dog.age,
@@ -106,12 +107,50 @@ class _ShelterScreenState extends State<ShelterScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Text(
-              '유기견 입양',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
+          Row(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(15),
+                child: Text(
+                  '유기견 입양',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Expanded(
+                child: Container(),
+              ),
+              Container(
+                padding: EdgeInsets.all(15),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
+                  decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: Colors.orange)),
+                  child: InkWell(
+                    onTap: _addButtonClicked,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 3),
+                        ),
+                        Text(
+                          '등록',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
           Container(
             padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
@@ -152,10 +191,10 @@ class _ShelterScreenState extends State<ShelterScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Container(
-                  child: FloatingActionButton.extended(
+                  child: FloatingActionButton(
                     onPressed: _addButtonClicked,
-                    label: Text('등록'),
-                    icon: Icon(Icons.add),
+                    child: Text('등록'),
+                    // icon: Icon(Icons.add),
                     backgroundColor: Colors.orange,
                   ),
                 )

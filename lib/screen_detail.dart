@@ -20,6 +20,15 @@ class DetailScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.access_alarm,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          )
+        ],
         elevation: 0.0,
         backgroundColor: Color(0xFFffffff),
         title: Row(
@@ -48,21 +57,40 @@ class DetailScreen extends StatelessWidget {
                     width: double.infinity,
                     color: Colors.grey[350],
                     child: Container(
-                      padding: EdgeInsets.all(12),
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Container(
+                            width: 15,
+                            child: CircleAvatar(
+                              child: Text(
+                                '!',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 8),
                             child: Text(
-                              'Notice!',
-                              style:
-                                  TextStyle(color: Colors.pink, fontSize: 18),
+                              'Notice',
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                           Container(
                             padding: EdgeInsets.only(left: 15),
                             child: Text(
                               '퀴즈를 통과해야 입양 신청이 가능합니다.',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black54,
+                              ),
                             ),
                           ),
                           Expanded(
@@ -71,7 +99,8 @@ class DetailScreen extends StatelessWidget {
                           Container(
                             child: Icon(
                               Icons.close,
-                              color: Colors.pink,
+                              color: Colors.black54,
+                              size: 18,
                             ),
                           )
                         ],
@@ -92,15 +121,23 @@ class DetailScreen extends StatelessWidget {
                 // 이름
                 Align(
                   child: Container(
-                    padding: EdgeInsets.only(bottom: 10),
-                    child: Text(
-                      dog.name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            dog.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          Container(
+                            width: dog.name.length.toDouble() * 24,
+                            height: 5,
+                            color: Colors.orange[200],
+                          ),
+                        ],
+                      )),
                 ),
                 // 강아지 정보
                 Align(
@@ -236,14 +273,26 @@ class DetailScreen extends StatelessWidget {
                       )),
                 ),
                 // 텍스트
-                Align(
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                    child: Text(
-                      dog.guard.type + '정보',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Column(
+                    children: <Widget>[
+                      Align(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                          child: Text(
+                            dog.guard.type + '정보',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: (dog.guard.type.length + 2).toDouble() * 22,
+                        height: 5,
+                        color: Colors.orange[200],
+                      ),
+                    ],
                   ),
                 ),
                 // 견주 정보
@@ -295,26 +344,6 @@ class DetailScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
                 ),
-                // 신청 버튼
-                Align(
-                  child: Container(
-                    padding: EdgeInsets.all(15),
-                    width: 200,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.orange,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: InkWell(
-                      child: Center(child: Text('입양 신청')),
-                      onTap: () {
-                        print('hi');
-                      },
-                    ),
-                  ),
-                ),
               ],
             ),
           )
@@ -322,10 +351,14 @@ class DetailScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Text(
-          '입양신청',
+          '          입양신청          ',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:my_guardian/screen_house.dart';
 import 'package:my_guardian/screen_main.dart';
 import 'package:my_guardian/screen_shelter.dart';
@@ -8,19 +9,20 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.black);
     return MaterialApp(
         title: 'Flutter layout demo',
         home: DefaultTabController(
-          length: 5,
+          length: 3,
           child: Scaffold(
             appBar: AppBar(
               elevation: 0.0,
-              backgroundColor: Color(0xFFffffff),
+              backgroundColor: Colors.white,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
-                    'images/logo.png',
+                    'images/logo_noback.png',
                     fit: BoxFit.contain,
                     height: 30,
                   ),
@@ -34,47 +36,37 @@ class MyApp extends StatelessWidget {
             body: TabBarView(
               children: <Widget>[
                 MainScreen(),
-                HouseScreen(),
-                ShelterScreen(),
-                Container(), // QuizPage
-                Container() // MyPage
+                HouseScreen(), // QuizPage
+                ShelterScreen(), // MyPage
               ],
             ),
-            bottomNavigationBar: TabBar(
-              labelColor: Colors.yellow,
-              unselectedLabelColor: Colors.black,
-              tabs: <Widget>[
-                Tab(
-                  icon: Icon(
-                    Icons.home,
+            bottomNavigationBar: SizedBox(
+              height: 60,
+              child: TabBar(
+                labelColor: Colors.orange,
+                unselectedLabelColor: Colors.black54,
+                indicatorColor: Colors.orange,
+                tabs: <Widget>[
+                  Tab(
+                    icon: Icon(
+                      Icons.home,
+                    ),
+                    text: 'home',
                   ),
-                  text: 'home',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.home,
+                  Tab(
+                    icon: Icon(
+                      Icons.help,
+                    ),
+                    text: 'quiz',
                   ),
-                  text: 'home',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.home,
+                  Tab(
+                    icon: Icon(
+                      Icons.person,
+                    ),
+                    text: 'home',
                   ),
-                  text: 'home',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.home,
-                  ),
-                  text: 'home',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.home,
-                  ),
-                  text: 'home',
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));
