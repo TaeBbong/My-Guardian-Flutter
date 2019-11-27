@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_guardian/form_dog.dart';
+import 'package:my_guardian/model_guard.dart';
 import 'package:my_guardian/screen_detail.dart';
 import 'package:my_guardian/widget_card.dart';
 import 'package:my_guardian/model_dog.dart';
-import 'package:my_guardian/model_guard.dart';
 
 class ShelterScreen extends StatefulWidget {
   _ShelterScreenState createState() => _ShelterScreenState();
@@ -21,12 +21,12 @@ class _ShelterScreenState extends State<ShelterScreen> {
       imageName: 'images/dog1.png',
       vac: '완료',
       mid: '완료',
-      spec: '안녕하세요\n반갑습니다.\n우리 강아지 귀엽죠? 저도 알아요',
+      spec: '안녕하세요안녕하세요안녕하세요\n반갑습니다안녕하세요.\n우리 강아지 귀엽죠? 저도 알아요',
       guard: User(userName: 'Guinness', score: 90, type: '보호소'),
     ),
     Dog(
       index: 1,
-      name: '휴지',
+      name: '댕댕이',
       type: '요크셔테리어',
       sex: '남자',
       age: '3살',
@@ -51,7 +51,7 @@ class _ShelterScreenState extends State<ShelterScreen> {
   ];
   String _searchText = "";
 
-  _HouseScreenState() {
+  _ShelterScreenState() {
     _filter.addListener(() {
       setState(() {
         _searchText = _filter.text;
@@ -62,19 +62,22 @@ class _ShelterScreenState extends State<ShelterScreen> {
   InkWell _buildCard(Dog dog) {
     return InkWell(
       child: CardWidget(
-          heading: dog.name,
-          subHeading:
-              '견종: ' + dog.type + ' / 성별: ' + dog.sex + ' / 나이: ' + dog.age,
-          imageName: dog.imageName,
-          width: 500,
-          index: dog.index),
+        heading: dog.name,
+        subHeading:
+            '견종: ' + dog.type + ' / 성별: ' + dog.sex + ' / 나이: ' + dog.age,
+        imageName: dog.imageName,
+        width: 500,
+        index: dog.index,
+      ),
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => DetailScreen(
-                      dog: dog,
-                    )));
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(
+              dog: dog,
+            ),
+          ),
+        );
       },
     );
   }
@@ -166,6 +169,6 @@ class _ShelterScreenState extends State<ShelterScreen> {
 
   void _addButtonClicked() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DogForm('보호소 강아지')));
+        context, MaterialPageRoute(builder: (context) => DogForm('유기견')));
   }
 }
