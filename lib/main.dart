@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:my_guardian/screen_house.dart';
-import 'package:my_guardian/screen_main.dart';
+import 'package:my_guardian/tab_main.dart';
+import 'package:my_guardian/tab_quiz_intro.dart';
 import 'package:my_guardian/screen_shelter.dart';
 
 void main() => runApp(MyApp());
@@ -36,8 +37,8 @@ class MyApp extends StatelessWidget {
             body: TabBarView(
               children: <Widget>[
                 MainScreen(),
-                HouseScreen(), // QuizPage
-                ShelterScreen(), // MyPage
+                AnnounceQuizScreen(), // QuizPage
+                AnnounceQuizScreen(), // MyPage
               ],
             ),
             bottomNavigationBar: SizedBox(
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
                     icon: Icon(
                       Icons.person,
                     ),
-                    text: 'home',
+                    text: 'my page',
                   ),
                 ],
               ),

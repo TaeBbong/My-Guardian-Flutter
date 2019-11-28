@@ -102,106 +102,142 @@ class _ShelterScreenState extends State<ShelterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(15),
-                child: Text(
-                  '유기견 입양',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Container(
-                padding: EdgeInsets.all(15),
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
-                  decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: Colors.orange)),
-                  child: InkWell(
-                    onTap: _addButtonClicked,
-                    child: Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 15,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 3),
-                        ),
-                        Text(
-                          '등록',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.grey,
           ),
-          Container(
-            padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
-            child: TextField(
-              style: TextStyle(fontSize: 15),
-              controller: _filter,
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.orange,
-                  size: 20,
-                ),
-                hintText: '검색',
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-              ),
+          onTap: () {},
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.access_alarm,
+              color: Colors.white,
             ),
-          ),
-          Expanded(
-            child: CustomScrollView(
-              slivers: <Widget>[
-                SliverList(
-                  delegate: SliverChildListDelegate(_buildList()),
-                )
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Container(
-                  child: FloatingActionButton(
-                    onPressed: _addButtonClicked,
-                    child: Text('등록'),
-                    // icon: Icon(Icons.add),
-                    backgroundColor: Colors.orange,
-                  ),
-                )
-              ],
-            ),
+            onPressed: () {},
           )
         ],
+        elevation: 0.0,
+        backgroundColor: Color(0xFFffffff),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              'images/logo_noback.png',
+              fit: BoxFit.contain,
+              height: 30,
+            ),
+            Container(
+                padding: const EdgeInsets.only(right: 1),
+                child:
+                    Text('My-Guardian', style: TextStyle(color: Colors.black)))
+          ],
+        ),
+      ),
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(15),
+                  child: Text(
+                    '유기견 입양',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+                Container(
+                  padding: EdgeInsets.all(15),
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
+                    decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(color: Colors.orange)),
+                    child: InkWell(
+                      onTap: _addButtonClicked,
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(right: 3),
+                          ),
+                          Text(
+                            '등록',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
+              child: TextField(
+                style: TextStyle(fontSize: 15),
+                controller: _filter,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.orange,
+                    size: 20,
+                  ),
+                  hintText: '검색',
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.orange),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.orange),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.orange),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                ),
+              ),
+            ),
+            Expanded(
+              child: CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildListDelegate(_buildList()),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Container(
+                    child: FloatingActionButton(
+                      onPressed: _addButtonClicked,
+                      child: Text('등록'),
+                      // icon: Icon(Icons.add),
+                      backgroundColor: Colors.orange,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

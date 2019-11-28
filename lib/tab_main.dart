@@ -52,7 +52,7 @@ class MainScreen extends StatelessWidget {
           // 가정입양/보호소입양 버튼
           Center(
             child: Container(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
               width: 400,
               child: Card(
                   shape: RoundedRectangleBorder(
@@ -63,7 +63,14 @@ class MainScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HouseScreen(),
+                            ),
+                          );
+                        },
                         child: Container(
                           padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
                           child: Text(
@@ -83,9 +90,11 @@ class MainScreen extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ShelterScreen()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ShelterScreen(),
+                            ),
+                          );
                         },
                         child: Container(
                           padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
@@ -103,97 +112,29 @@ class MainScreen extends StatelessWidget {
             ),
           ),
           // 퀴즈풀기 버튼
-          Center(
-            child: InkWell(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                width: 400,
-                child: Card(
-                    color: Colors.orange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    margin: EdgeInsets.all(5),
-                    child: Center(
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
-                        child: Text(
-                          '퀴즈풀기',
-                          style: TextStyle(
-                              fontSize: 18,
-                              // fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ),
-                    )),
-              ),
-            ),
-          ),
           // Center(
-          //   child: Container(
-          //     width: 350,
-          //     height: 50,
-          //     padding: EdgeInsets.all(0),
-          //     decoration: BoxDecoration(boxShadow: [
-          //       BoxShadow(
-          //           color: Colors.grey,
-          //           blurRadius: 20,
-          //           spreadRadius: 5,
-          //           offset: Offset(10, 10))
-          //     ]),
+          //   child: InkWell(
           //     child: Container(
-          //       padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
-          //       decoration: BoxDecoration(
+          //       padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+          //       width: 400,
+          //       child: Card(
           //           color: Colors.orange,
-          //           borderRadius: BorderRadius.circular(30),
-          //           border: Border.all(color: Colors.orange)),
-          //       child: InkWell(
-          //         // onTap: _addButtonClicked,
-          //         child: Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: <Widget>[
-          //             Text(
-          //               '퀴즈풀기',
-          //               style: TextStyle(
-          //                 color: Colors.white,
-          //                 fontSize: 20,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.circular(20),
+          //           ),
+          //           margin: EdgeInsets.all(5),
+          //           child: Center(
+          //             child: Container(
+          //               padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
+          //               child: Text(
+          //                 '퀴즈풀기',
+          //                 style: TextStyle(
+          //                     fontSize: 18,
+          //                     // fontWeight: FontWeight.bold,
+          //                     color: Colors.white),
           //               ),
-          //             )
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          // Padding(
-          //   padding: EdgeInsets.only(top: 10),
-          // ),
-          // Center(
-          //   child: Container(
-          //     width: 350,
-          //     height: 50,
-          //     padding: EdgeInsets.all(0),
-          //     child: Container(
-          //       padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
-          //       decoration: BoxDecoration(
-          //           color: Colors.orange,
-          //           borderRadius: BorderRadius.circular(30),
-          //           border: Border.all(color: Colors.orange)),
-          //       child: InkWell(
-          //         // onTap: _addButtonClicked,
-          //         child: Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: <Widget>[
-          //             Text(
-          //               '퀴즈풀기',
-          //               style: TextStyle(
-          //                 color: Colors.white,
-          //                 fontSize: 20,
-          //               ),
-          //             )
-          //           ],
-          //         ),
-          //       ),
+          //             ),
+          //           )),
           //     ),
           //   ),
           // ),
