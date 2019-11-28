@@ -408,6 +408,10 @@ class _DogFormState extends State<DogForm> {
                         decoration: InputDecoration(
                           hintText: '이용약관 입니다. 동의하셔야쥬?\n동의할거지?',
                           hintStyle: TextStyle(color: Colors.black),
+                          disabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.orange),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.orange),
                               borderRadius:
@@ -445,21 +449,24 @@ class _DogFormState extends State<DogForm> {
             ),
             // 확인 버튼
             Container(
-                padding: EdgeInsets.only(bottom: 15),
-                child: Center(
-                    child: ButtonTheme(
-                        minWidth: 200,
-                        height: 50,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: RaisedButton(
-                          child: Text(
-                            '확인',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          color: Colors.orange,
-                          onPressed: _goBack,
-                        )))),
+              padding: EdgeInsets.only(bottom: 15),
+              child: Center(
+                child: ButtonTheme(
+                  minWidth: 200,
+                  height: 50,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: RaisedButton(
+                    child: Text(
+                      '확인',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.orange,
+                    onPressed: _goBack,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

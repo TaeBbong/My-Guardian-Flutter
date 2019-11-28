@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_guardian/form_adopt.dart';
 import 'package:my_guardian/model_dog.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -358,7 +359,10 @@ class DetailScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AdoptForm(dog)));
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
