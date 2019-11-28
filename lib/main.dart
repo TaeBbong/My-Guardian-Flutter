@@ -9,7 +9,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.black);
+    FlutterStatusbarcolor.setStatusBarColor(Colors.orange);
     return MaterialApp(
         title: 'Flutter layout demo',
         home: DefaultTabController(
