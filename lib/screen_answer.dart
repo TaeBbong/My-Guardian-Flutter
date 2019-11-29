@@ -5,44 +5,20 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:my_guardian/model_quiz.dart';
 import 'package:my_guardian/screen_quiz_done.dart';
 
-class QuizScreen extends StatefulWidget {
+class AnswerScreen extends StatefulWidget {
   final List<Quiz> quizs;
-  QuizScreen({Key key, this.quizs}) : super(key: key);
-  _QuizScreenState createState() => _QuizScreenState();
+  AnswerScreen({Key key, this.quizs}) : super(key: key);
+  _AnswerScreenState createState() => _AnswerScreenState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _AnswerScreenState extends State<AnswerScreen> {
   final Map<int, dynamic> _answers = {};
   int _currentIndex = 0;
-  int _timer = 30;
-  String _showTimer = '30';
   SwiperController controller = SwiperController();
 
   @override
   void initState() {
-    startTimer();
     super.initState();
-  }
-
-  void startTimer() async {
-    const onesec = Duration(seconds: 1);
-    Timer.periodic(onesec, (Timer t) {
-      setState(() {
-        if (_timer < 1) {
-          // t.cancel();
-          _timer = 30;
-          if (this._currentIndex == widget.quizs.length - 1) {
-            t.cancel();
-          } else {
-            this._currentIndex += 1;
-            controller.next(animation: true);
-          }
-        } else {
-          _timer = _timer - 1;
-          _showTimer = _timer.toString();
-        }
-      });
-    });
   }
 
   @override
@@ -54,31 +30,6 @@ class _QuizScreenState extends State<QuizScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.fromLTRB(40, 0, 40, 10),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.timer),
-                  Text('0:' + _showTimer),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  Container(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.exit_to_app),
-                          Text('홈으로'),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(color: Colors.orange),
@@ -86,7 +37,7 @@ class _QuizScreenState extends State<QuizScreen> {
               width: 350,
               height: 500,
               child: Swiper(
-                physics: NeverScrollableScrollPhysics(),
+                // physics: NeverScrollableScrollPhysics(),
                 loop: false,
                 itemBuilder: (BuildContext context, int index) {
                   return _buildQuizCard(index, widget.quizs[index]);
@@ -162,9 +113,7 @@ class _QuizScreenState extends State<QuizScreen> {
             selectedColor: Colors.orange,
             text: quiz.cand1,
             index: 1,
-            tap: () {
-              this._answers[_currentIndex] = 1;
-            },
+            answer: quiz.answer == 1 ? true : false,
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 10),
@@ -174,9 +123,7 @@ class _QuizScreenState extends State<QuizScreen> {
             selectedColor: Colors.orange,
             text: quiz.cand2,
             index: 2,
-            tap: () {
-              this._answers[_currentIndex] = 2;
-            },
+            answer: quiz.answer == 2 ? true : false,
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 10),
@@ -186,9 +133,7 @@ class _QuizScreenState extends State<QuizScreen> {
             selectedColor: Colors.orange,
             text: quiz.cand3,
             index: 3,
-            tap: () {
-              this._answers[_currentIndex] = 3;
-            },
+            answer: quiz.answer == 3 ? true : false,
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 10),
@@ -198,9 +143,7 @@ class _QuizScreenState extends State<QuizScreen> {
             selectedColor: Colors.orange,
             text: quiz.cand4,
             index: 4,
-            tap: () {
-              this._answers[_currentIndex] = 4;
-            },
+            answer: quiz.answer == 4 ? true : false,
           ),
           Expanded(
             child: Container(),
@@ -217,7 +160,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: RaisedButton(
                   child: this._currentIndex == widget.quizs.length - 1
                       ? Text(
-                          '결과보기',
+                          '돌아가기',
                           style: TextStyle(color: Colors.white),
                         )
                       : Text(
@@ -226,17 +169,16 @@ class _QuizScreenState extends State<QuizScreen> {
                         ),
                   color: Colors.orange,
                   onPressed: () {
-                    _timer = 30;
                     if (this._currentIndex == widget.quizs.length - 1) {
                       this.dispose();
-                      // Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => QuizResultScreen(
-                              quizs: widget.quizs, answers: this._answers),
-                        ),
-                      );
+                      Navigator.pop(context);
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => QuizResultScreen(
+                      //         quizs: widget.quizs, answers: this._answers),
+                      //   ),
+                      // );
                     } else {
                       controller.next(animation: true);
                       this._currentIndex += 1;
@@ -258,15 +200,21 @@ class CandiWidget extends StatefulWidget {
   Color selectedColor;
   String text;
   int index;
+  bool answer;
 
   CandiWidget(
-      {this.tap, this.defaultColor, this.selectedColor, this.text, this.index});
+      {this.tap,
+      this.defaultColor,
+      this.selectedColor,
+      this.text,
+      this.index,
+      this.answer});
 
   _CandiWidgetState createState() => _CandiWidgetState();
 }
 
 class _CandiWidgetState extends State<CandiWidget> {
-  bool _pressed = false;
+  // bool _pressed = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -275,23 +223,15 @@ class _CandiWidgetState extends State<CandiWidget> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.orange),
-        color: _pressed ? widget.selectedColor : widget.defaultColor,
+        color: widget.answer ? widget.selectedColor : widget.defaultColor,
       ),
       child: InkWell(
         child: Text(
           widget.text,
           style: TextStyle(
             fontSize: 14,
-            color: _pressed ? Colors.white : Colors.black,
+            color: widget.answer ? Colors.white : Colors.black,
           ),
-        ),
-        onTap: () => setState(
-          () {
-            widget.tap();
-            this.setState(() {
-              _pressed = !_pressed;
-            });
-          },
         ),
       ),
     );

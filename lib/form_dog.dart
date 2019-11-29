@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DogForm extends StatefulWidget {
   final String dogType;
@@ -404,9 +405,10 @@ class _DogFormState extends State<DogForm> {
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: TextField(
                         enabled: false,
-                        maxLines: 8,
+                        maxLines: 30,
                         decoration: InputDecoration(
-                          hintText: '이용약관 입니다. 동의하셔야쥬?\n동의할거지?',
+                          hintText:
+                              '집사할래는 개인정보취급방침을 통하여 담당자가 제공하는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치를 취해지고 있는지 알려드립니다. \n\n1. 수집하는 개인정보의 활용정보 및 항목\n집사할래에서는  아래의 개인정보를 수집하여 입양서비스제공과 입양 후 사후관리(보증금지급, 게약이행여부 확인 등)에 활용할 계획에 있습니다. \n- 수집항목 : 회원성명, 이메일, 연락처 등 개인정보\n\n2. 개인정보의 제3자 제공\n집사할래 회원의 개인정보를 원칙적으로 외부에 제공하지 않습니다. \n다만 서비스제공을 위하여 입양 신청서에 기재된 개인정보는 사전에 동의한 경우에 제한적으로 제공됩니다.\n- 제공대상 : 분양자\n- 제공하는 항목 : 회원성명, 점수내역 등 개인정보\n- 제공 목적 :  오프라인 미팅 주선과 사후관리(보증금지급, 게약이행여부 확인 등)\n\n위 개인정보의 수집·이용·제공과 관련하여 개인정보 동의를 거부할 수 있습니다. 다만, 위 개인정보는 원활한 서비스제공을 위한 자료 요청 등으로 활용할 계획이므로, 거부하실 경우 서비스사용이 제한되실 수 있습니다.\n\n※ 개인정보 제공자가 동의한 내용 외의 다른 목적으로 활용하지 않으며 제공된 개인정보의 이용을 , 거부하고자 할 때에는 개인정보 관리책임자를 통해 열람 정정 삭제를 요구할 수 있음',
                           hintStyle: TextStyle(color: Colors.black),
                           disabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.orange),

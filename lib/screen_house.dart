@@ -7,49 +7,16 @@ import 'package:my_guardian/model_dog.dart';
 import 'package:my_guardian/widget_listcard.dart';
 
 class HouseScreen extends StatefulWidget {
+  List<Dog> dogs;
+  List<User> users;
+  HouseScreen({this.dogs, this.users});
   _HouseScreenState createState() => _HouseScreenState();
 }
 
 class _HouseScreenState extends State<HouseScreen> {
   final TextEditingController _filter = new TextEditingController();
-  List<Dog> dogs = [
-    Dog(
-      index: 0,
-      name: '보리',
-      type: '믹스견',
-      sex: '여자',
-      age: '1살',
-      imageName: 'images/dog1.png',
-      vac: '완료',
-      mid: '완료',
-      spec: '안녕하세요안녕하세요안녕하세요\n반갑습니다안녕하세요.\n우리 강아지 귀엽죠? 저도 알아요',
-      guard: User(userName: 'Guinness', score: 90, type: '견주'),
-    ),
-    Dog(
-      index: 1,
-      name: '멍멍이',
-      type: '요크셔테리어',
-      sex: '남자',
-      age: '3살',
-      imageName: 'images/dog2.jpeg',
-      vac: '완료',
-      mid: '완료',
-      spec: '안녕하세요\n반갑습니다.\n우리 강아지 귀엽죠? 저도 알아요',
-      guard: User(userName: 'Guinness', score: 90, type: '견주'),
-    ),
-    Dog(
-      index: 2,
-      name: '쫄랑이',
-      type: '치와와',
-      sex: '여자',
-      age: '2살',
-      imageName: 'images/dog3.jpeg',
-      vac: '완료',
-      mid: '완료',
-      spec: '안녕하세요\n반갑습니다.\n우리 강아지 귀엽죠? 저도 알아요',
-      guard: User(userName: 'Guinness', score: 90, type: '견주'),
-    )
-  ];
+
+  List<Dog> filtered_dogs = [];
   String _searchText = "";
 
   _HouseScreenState() {
@@ -76,6 +43,7 @@ class _HouseScreenState extends State<HouseScreen> {
           MaterialPageRoute(
             builder: (context) => DetailScreen(
               dog: dog,
+              users: widget.users,
             ),
           ),
         );
@@ -86,18 +54,36 @@ class _HouseScreenState extends State<HouseScreen> {
   List<Widget> _buildList() {
     List<Widget> result = [];
     if (_searchText.isEmpty || _searchText == "") {
-      for (Dog dog in dogs) {
+      for (Dog dog in this.filtered_dogs) {
         result.add(_buildCard(dog));
       }
       return result;
     } else {
-      for (Dog dog in dogs) {
+      for (Dog dog in this.filtered_dogs) {
         if ((dog.name + ' ' + dog.type).contains(_searchText)) {
           result.add(_buildCard(dog));
         }
       }
       return result;
     }
+  }
+
+  @override
+  void initState() {
+    print(widget.dogs.length);
+    for (Dog dog in widget.dogs) {
+      User temp_user = widget.users[dog.guard - 1];
+      // for (User user in widget.users) {
+      //   if (user.userName == dog.guard) {
+      //     temp_user = user;
+      //     break;
+      //   }
+      // }
+      if (temp_user.type == "person") {
+        this.filtered_dogs.add(dog);
+      }
+    }
+    super.initState();
   }
 
   @override

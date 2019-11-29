@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
               padding: new EdgeInsets.only(
                   top: _height / 30, left: _width / 8, right: _width / 8),
               child: new Text(
-                '강아지를 너무 좋아해서 앱을 만든 기네스입니다!\n장고와 쫄랑이를 좋아해요:)',
+                '강아지를 좋아해서 앱을 만든 기네스입니다!\n장고와 쫄랑이를 좋아해요:)',
                 style: new TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: _width / 25,

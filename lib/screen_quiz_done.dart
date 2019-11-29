@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_guardian/model_quiz.dart';
+import 'package:my_guardian/screen_answer.dart';
 
 class QuizResultScreen extends StatelessWidget {
   final Map<int, dynamic> answers;
@@ -133,7 +134,34 @@ class QuizResultScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                   width: 300,
-                  height: 70,
+                  height: 60,
+                  child: InkWell(
+                    child: Center(
+                      child: Text(
+                        '정답보기',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  AnswerScreen(quizs: this.quizs)));
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.orange),
+                    color: Colors.white,
+                  ),
+                  width: 300,
+                  height: 60,
                   child: InkWell(
                     child: Center(
                       child: Text(

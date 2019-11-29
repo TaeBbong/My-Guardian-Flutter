@@ -34,7 +34,7 @@ class ListCardWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Image.asset(
+              Image.network(
                 this.imageName,
                 width: 150,
               ),
@@ -67,7 +67,7 @@ class ListCardWidget extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(1),
                       child: Text(
-                        this.subHeading.split('/')[2],
+                        this.subHeading.split('/')[2] + '살',
                         style: TextStyle(fontSize: 13),
                       ),
                     ),

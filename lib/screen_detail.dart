@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:my_guardian/form_adopt.dart';
 import 'package:my_guardian/model_dog.dart';
+import 'package:my_guardian/model_guard.dart';
 
 class DetailScreen extends StatelessWidget {
   final Dog dog;
-  DetailScreen({this.dog});
+  final List<User> users;
+  DetailScreen({this.dog, this.users});
 
   @override
   Widget build(BuildContext context) {
+    User current_user = this.users[this.dog.guard - 1];
     print('detail screen');
     print(this.dog.name);
+
+    // for (User user in this.users) {
+    //   if (user.userName == this.dog.guard) {
+    //     current_user = user;
+    //   }
+    // }
+
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
@@ -97,13 +107,13 @@ class DetailScreen extends StatelessWidget {
                           Expanded(
                             child: Container(),
                           ),
-                          Container(
-                            child: Icon(
-                              Icons.close,
-                              color: Colors.black54,
-                              size: 18,
-                            ),
-                          )
+                          // Container(
+                          //   child: Icon(
+                          //     Icons.close,
+                          //     color: Colors.black54,
+                          //     size: 18,
+                          //   ),
+                          // )
                         ],
                       ),
                     ),
@@ -113,7 +123,7 @@ class DetailScreen extends StatelessWidget {
                 Align(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
-                    child: Image.asset(
+                    child: Image.network(
                       dog.imageName,
                       width: 300,
                     ),
@@ -205,7 +215,7 @@ class DetailScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text(' - ' + dog.age),
+                                  Text(' - ' + dog.age + '살'),
                                 ],
                               ),
                             ),
@@ -263,10 +273,14 @@ class DetailScreen extends StatelessWidget {
                               ),
                             ),
                             Container(
-                                padding: EdgeInsets.only(left: 20),
+                                padding: EdgeInsets.only(left: 10),
                                 child: Row(
                                   children: <Widget>[
-                                    Text(dog.spec),
+                                    Text(
+                                      dog.spec
+                                          .replaceAll('. ', '.\n')
+                                          .replaceAll('! ', '!\n'),
+                                    ),
                                   ],
                                 ))
                           ],
@@ -281,15 +295,23 @@ class DetailScreen extends StatelessWidget {
                       Align(
                         child: Container(
                           padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                          child: Text(
-                            dog.guard.type + '정보',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          ),
+                          child: current_user.type == "person"
+                              ? Text(
+                                  '견주정보',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                )
+                              : Text(
+                                  '보호소정보',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
                         ),
                       ),
                       Container(
-                        width: (dog.guard.type.length + 2).toDouble() * 22,
+                        width: (4.5).toDouble() * 22,
                         height: 5,
                         color: Colors.orange[200],
                       ),
@@ -325,14 +347,14 @@ class DetailScreen extends StatelessWidget {
                           padding: EdgeInsets.only(top: 7),
                         ),
                         Text(
-                          dog.guard.userName,
+                          this.users[this.dog.guard - 1].userName,
                           style: TextStyle(color: Colors.white),
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 7),
                         ),
                         Text(
-                          dog.guard.score.toString() + '점',
+                          current_user.score.toString() + '점',
                           style: TextStyle(color: Colors.white),
                         ),
                         Padding(
@@ -343,7 +365,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
+                  padding: EdgeInsets.fromLTRB(0, 50, 0, 30),
                 ),
               ],
             ),

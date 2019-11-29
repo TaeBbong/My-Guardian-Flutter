@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:my_guardian/model_dog.dart';
+import 'package:my_guardian/model_guard.dart';
 import 'package:my_guardian/screen_house.dart';
 import 'package:my_guardian/screen_shelter.dart';
 import 'package:my_guardian/widget_card.dart';
 
 class MainScreen extends StatelessWidget {
+  List<Dog> dogs;
+  List<User> users;
+
+  MainScreen({this.dogs, this.users});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,7 +76,8 @@ class MainScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HouseScreen(),
+                              builder: (context) =>
+                                  HouseScreen(dogs: dogs, users: users),
                             ),
                           );
                         },
@@ -95,7 +102,8 @@ class MainScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ShelterScreen(),
+                              builder: (context) =>
+                                  ShelterScreen(dogs: dogs, users: users),
                             ),
                           );
                         },
