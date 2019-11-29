@@ -27,32 +27,35 @@ class MainScreen extends StatelessWidget {
               children: <Widget>[
                 CardWidget(
                   imageName: 'images/dog1.png',
-                  heading: '후기제목1',
-                  subHeading: '내용1',
+                  heading: '집사할래 입양 최고!',
+                  subHeading: '항상 걱정이었는데, 입양이 잘되어..',
                   width: 200,
                   height: 200,
                 ),
                 CardWidget(
                   imageName: 'images/dog2.jpeg',
-                  heading: '후기제목2',
-                  subHeading: '내용2',
+                  heading: '견주분 완전 강잘알;',
+                  subHeading: '강형욱이 오신 줄 알았습니다..',
                   width: 200,
                   height: 200,
                 ),
                 CardWidget(
                   imageName: 'images/dog3.jpeg',
-                  heading: '후기제목3',
-                  subHeading: '내용3',
+                  heading: '강아지 너무 귀여워요!',
+                  subHeading: '너무 귀여워서 어떡하면 좋죠ㅠㅠ..',
                   width: 200,
                   height: 200,
                 ),
               ],
             ),
           ),
+          Expanded(
+            child: Container(),
+          ),
           // 가정입양/보호소입양 버튼
           Center(
             child: Container(
-              padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               width: 400,
               child: Card(
                   shape: RoundedRectangleBorder(
@@ -111,6 +114,9 @@ class MainScreen extends StatelessWidget {
                   )),
             ),
           ),
+          Expanded(
+            child: Container(),
+          ),
           // 퀴즈풀기 버튼
           // Center(
           //   child: InkWell(
@@ -151,7 +157,12 @@ Widget mockupSection = Container(
     autoPlay: true,
     enlargeCenterPage: false,
     height: 250,
-    items: <String>['images/mockup.png', 'images/dog1.png'].map((i) {
+    items: <String>[
+      'images/n_mockup1.png',
+      'images/n_mockup4.png',
+      'images/n_mockup3.png',
+      'images/n_mockup2.png',
+    ].map((i) {
       return Builder(
         builder: (BuildContext context) {
           return Container(

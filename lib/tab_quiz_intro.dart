@@ -1,7 +1,45 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:my_guardian/adapter_api.dart';
+import 'package:my_guardian/model_quiz.dart';
 import 'package:my_guardian/screen_quiz.dart';
 
-class AnnounceQuizScreen extends StatelessWidget {
+class AnnounceQuizScreen extends StatefulWidget {
+  _AnnounceQuizScreenState createState() => _AnnounceQuizScreenState();
+}
+
+class _AnnounceQuizScreenState extends State<AnnounceQuizScreen> {
+  List<Quiz> quizs;
+  bool isLoading = false;
+
+  _fetchQuizs() async {
+    setState(() {
+      isLoading = true;
+    });
+    final response =
+        await http.get("http://guinness.pythonanywhere.com/api/quiz/");
+    if (response.statusCode == 200) {
+      this.quizs = parseQuizs(utf8.decode(response.bodyBytes));
+      setState(() {
+        isLoading = false;
+        print('Done!!');
+        print(this.quizs[0].title);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QuizScreen(
+              quizs: quizs.sublist(0, 10),
+            ),
+          ),
+        );
+      });
+    } else {
+      throw Exception('Failed to load photos');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -77,14 +115,7 @@ class AnnounceQuizScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                   color: Colors.orange,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => QuizScreen(),
-                      ),
-                    );
-                  },
+                  onPressed: _fetchQuizs,
                 ),
               ),
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:my_guardian/screen_house.dart';
 import 'package:my_guardian/tab_main.dart';
+import 'package:my_guardian/tab_profile.dart';
 import 'package:my_guardian/tab_quiz_intro.dart';
 import 'package:my_guardian/screen_shelter.dart';
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
               children: <Widget>[
                 MainScreen(),
                 AnnounceQuizScreen(), // QuizPage
-                AnnounceQuizScreen(), // MyPage
+                ProfileScreen(), // MyPage
               ],
             ),
             bottomNavigationBar: SizedBox(

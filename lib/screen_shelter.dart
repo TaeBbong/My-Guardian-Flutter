@@ -109,7 +109,9 @@ class _ShelterScreenState extends State<ShelterScreen> {
             Icons.arrow_back,
             color: Colors.grey,
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
         actions: <Widget>[
           IconButton(
@@ -220,22 +222,24 @@ class _ShelterScreenState extends State<ShelterScreen> {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Container(
-                    child: FloatingActionButton(
-                      onPressed: _addButtonClicked,
-                      child: Text('등록'),
-                      // icon: Icon(Icons.add),
-                      backgroundColor: Colors.orange,
-                    ),
-                  )
-                ],
-              ),
-            )
+
+            // Container(
+            //   padding: EdgeInsets.all(8),
+            //   color: Colors.transparent,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.end,
+            //     children: <Widget>[
+            //       Container(
+            //         child: FloatingActionButton(
+            //           onPressed: _addButtonClicked,
+            //           child: Text('등록'),
+            //           // icon: Icon(Icons.add),
+            //           backgroundColor: Colors.orange,
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

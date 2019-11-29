@@ -109,7 +109,9 @@ class _HouseScreenState extends State<HouseScreen> {
             Icons.arrow_back,
             color: Colors.grey,
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
         actions: <Widget>[
           IconButton(

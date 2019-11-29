@@ -22,6 +22,7 @@ dependencies:
   carousel_slider:
   flutter_statusbarcolor:
   flutter_swiper:
+  http:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -44,11 +45,16 @@ flutter:
   assets:
     - images/logo.png
     - images/logo_noback.png
-    - images/mockup.png
+    - images/n_mockup1.png
+    - images/n_mockup2.png
+    - images/n_mockup3.png
+    - images/n_mockup4.png
     - images/dog1.png
     - images/dog2.jpeg
     - images/dog3.jpeg
     - images/foot.jpeg
+    - images/sample_person.jpg
+    - images/guinness.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
